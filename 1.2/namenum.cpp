@@ -39,11 +39,11 @@ struct tree_node{
 	dic_tree_node* p[26]; 	
 };
 
-dic_tree_node * new_node()
+dic_tree_node* new_node()
 {
-	dic_tree_node * temp;	
-	temp = (dic_tree_node*) new dic_tree_node;
-	memset(temp,0,sizeof(temp));
+	dic_tree_node* temp;	
+	temp = new dic_tree_node;
+	memset(temp,0,sizeof(*temp));
 	return temp;
 }
 
@@ -68,7 +68,7 @@ void add_string(dic_tree_node* node,string s,int id)
 	}
 }
 
-void search_node(dic_tree_node* node,int num[], int id,char * ans)
+void search_node(dic_tree_node* node,int num[], int id,char * ans,ofstream &cout)
 {
 	int c,len;
 	string s;
@@ -77,7 +77,7 @@ void search_node(dic_tree_node* node,int num[], int id,char * ans)
 		if (node->flag)
 		{
 			flag = 1;
-			cout << ans<< endl;	
+			cout << ans << endl;	
 		}
 		return ;
 	}
@@ -90,7 +90,7 @@ void search_node(dic_tree_node* node,int num[], int id,char * ans)
 		{
 			ans[id] = s[i];
 			ans[id+1] = '\0';	
-			search_node(node->p[c],num,id + 1,ans);	
+			search_node(node->p[c],num,id + 1,ans,cout);	
 		}
 	}
 }
@@ -101,8 +101,9 @@ int main(void){
 	string temp;
 	dic_tree_node * root;
 
-//	ifstream cin (strcat(fin,".in"));
-//	ofstream cout (strcat(fout,".out"));
+	ifstream cin (strcat(fin,".in"));
+	ofstream cout (strcat(fout,".out"));
+
 	root = new_node();
 	
 	ifstream fdic ("dict.txt");
@@ -116,7 +117,7 @@ int main(void){
 	for(int i = 0;i < n;i++)
 		num[i] = temp[i] - '0';	
 	
-	search_node(root,num,0,ans);
+	search_node(root,num,0,ans,cout);
 	if (!flag)
 		cout << "NONE" << endl;
 	return 0;
