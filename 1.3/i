@@ -1,0 +1,12 @@
+
+shb{
+	int a;
+	int b;
+	bool operator < (const type* &right)const
+	{
+		if (this->a==right.a) return this->b<right.b;	
+		return this->a<right.b;
+	}
+} ;
+
+
