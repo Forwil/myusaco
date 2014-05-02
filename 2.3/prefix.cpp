@@ -18,39 +18,52 @@ LANG: C++
 
 using namespace std; 
 
-int n,m,dp[300];
+int n,m,dp[200005];
 string arr[300],data;
 
 ifstream fin(FILE".in");
 ofstream fout(FILE".out");	
 
 int main(void){
-	int x,ans = 0;
+	int x,ans = -1;
+	string temp;
 	string s;
+
 	while(1)
 	{
 		fin >> arr[n++];
+		//cout << arr[n-1] << endl;
 		if(arr[n-1].compare(".") == 0)
 			break;
 	}
-	fin >> data;
-	n -= 1;
+	n = n-1;
+	data = "";
+	while(1)
+	{
+		fin >> temp;
+		if(fin.eof())
+			break;
+		data += temp;
+	}	
 	for(int i = 0;i < data.size();i++)
 	{
-		for(int j = i;j>=0;j--)
+		for(int k = 0;k<n;k++)
 		{
-			string temp = data.substr(j,i-j+1);	
-			//cout << temp <<endl;
-			for(int k = 0;k<n;k++)
-				if(temp.compare(arr[k]) == 0)
+			int len = arr[k].size();
+			if(len > i + 1)
+				break;
+			string temp = data.substr(i-len+ 1,len);	
+		//	cout << temp << " " << arr[k] <<" " <<temp.compare(arr[k]) << endl;
+			if(temp.compare(arr[k]) == 0)
+			{
+				if (i - len == -1 || (dp[i - len] == 1) )
 				{
-					if (j == 0 || (dp[j-1] == 1) )
-					{
-						dp[i] = 1;	
-						ans = i;
-					}
+					dp[i] = 1;	
+					ans = i;
+					break;
 				}
-		}	
+			}
+		}
 	}
 	fout << ans + 1 << endl;
 	return 0;
