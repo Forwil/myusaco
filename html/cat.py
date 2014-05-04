@@ -6,7 +6,7 @@ sys.setdefaultencoding('utf-8')
 import requests
 import BeautifulSoup
 base_url = "http://cerberus.delos.com:790"
-url = "http://cerberus.delos.com:790/usacogate?NAME=forwil11&PASSWORD=yu56821423&C=1"
+url = "http://cerberus.delos.com:790/usacogate?NAME=forwil11&PASSWORD=yu56821423&C=2"
 s = requests.Session()
 print s.headers
 res = s.request("get",url)

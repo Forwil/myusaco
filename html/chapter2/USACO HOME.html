@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+ <title>USA Computing Olympiad</title>
+ <link rel="stylesheet" type="text/css" href="current/usaco.css">
+ <script src="current/js/jquery.min.js"></script>
+ <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+ <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+ <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+
+</head>
+
+<body>
+ <div align="center">
+  <div class="shadow1">
+
+   <div class="content">
+  
+ <a href="index.php"><img src="current/images/usaco_logo.png" width="900px" height="130px" border="0px" /></a> 
+
+    <div class="navbar" align="left" border="10px">
+     <ul>
+      <li><a href="index.php">Overview</a></li> 
+      <li><a href="index.php?page=training">Training</a></li>
+      <li><a href="index.php?page=contests">Contests</a></li>
+      <li><a href="index.php?page=history">History</a></li>
+      <li><a href="index.php?page=staff">Staff</a></li>
+      <li><a href="index.php?page=resources">Resources</a></li>
+     </ul>
+    </div><br/>
+
+   
+    <div style="position:relative; float:left; left:10px; top:-50px; width:550px;"> 
+<div class="panel">
+
+<h2> Finalists for 2013-2014 Season Announced </h2>
+
+<p>The USA Computing Olympiad is pleased to announce its <a href="index.php?page=finalists14">finalists</a> for the 2013-2014 season! These 24 indidivuals will be attending the USACO summer training camp
+and competing to represent the USA at the 2014 International Olympiad in Informatics. </p>
+
+<h2> US Open Contest </h2>
+
+<p>The USACO 2014 US Open contest has recently ended.  Please
+<a href="index.php?page=open14results">click here</a> for results, or
+to practice re-submitting solutions to the contest problems.  
+Results on selection of our finalists for this year will be 
+posted soon. </p>
+
+<h2> Our Mission </h2> 
+
+ The USACO supports computing education in the USA and
+ worldwide by identifying, motivating, and training 
+ high-school computing students at all levels.  We provide:
+
+ <ul>
+
+  <li> Hundreds of hours of free on-line <a href="index.php?page=training">training
+  resources</a> that students can use to improve their programming
+  and computational problem-solving skills.</li>
+
+  <li> On-line <a href="index.php?page=contests">programming contests</a> (roughly six
+  per year) for students at all levels. </li>
+
+  <li> An intensive summer <a href="index.php?page=camp">training camp</a>, to
+  which the top students in the USA are invited to further improve
+  their skills and learn advanced material. </li>
+
+  <li> The opportunity for the top four students in the USA to
+  represent their country at the <a href="http://www.ioinformatics.org">International
+  Olympiad in Informatics (IOI)</a>, the most prestigious
+  international algorithmic programming competition at the
+  high-school level. </li>
+
+ </ul>
+</div>
+
+<div class="panel">
+
+<h2> IOI 2013: Strong Results for Team USA </h2>
+
+ <img src="current/images/current_news/usa_team_2013.jpg" 
+  width="100%" border="1px" padding="5px"  />
+
+ Team USA turned in impressive results at the 2013 International Olympiad
+   in Informatics in Brisbane, Australia!  Congratulations to:
+ Scott Wu (gold, 5th place overall),
+   Steven Hao (silver), Johnny Ho (silver), Joshua Brakensiek (gold).
+
+</div>
+
+<div class="panel">
+
+<h2> Finalists for 2012-2013 Season Announced </h2>
+
+<p>The USA Computing Olympiad is pleased to announce its <a href="index.php?page=finalists13">finalists</a> for the 2012-2013 season!
+These 24 indidivuals will be attending the USACO summer training camp
+and competing to represent the USA at the 2013 International Olympiad
+in Informatics. </p>
+
+</div>
+
+<div class="panel">
+
+<h2> USA Wins Big at IOI 2012 </h2>
+
+ <img src="current/images/current_news/usa_team_2012.jpg" 
+  width="100%" border="1px" padding="5px"  />
+
+   Congratulations to the USA team attending the 2012 International Olympiad
+   in Informatics in Sirmione, Italy -- they won a total of three gold medals and
+   one bronze medal, with team member Johnny Ho achieving a perfect score and 
+   winning first place individually! Pictured above: Daniel Ziegler (bronze), Johnny Ho (gold, first place winner), Mitchell Lee
+   (gold), Scott Wu (gold).
+
+</div>
+
+</div>
+
+<div style="position:relative; float:right; right:10px; top:-50px; width:300px;"> 
+ 
+    <div class="panel" style="background-color:#FFF;">
+      <h2> Your Account </h2>
+
+       
+      <div class="inline-block">
+       <form method="POST" action="current/tpcm/login-session.php" id="login-form">
+        <div id="login">
+
+	 Not currently logged in.
+         <div class="form_error">Error!</div>
+
+          <div class="field">
+           <label for="uname">Username:</label>
+            <input name="uname" size="20" type="text" /></div>
+          <div class="field">
+            <label for="password">Password:</label>
+            <input name="password" size="20" type="password" /> 
+          </div>
+          <div class="forgotpass">
+            <label for="blank"></label>
+            <a href="index.php?page=resetpw">Forgot password?</a>
+          </div>
+           <div class="field">
+	   <span>
+          <input type="submit" value="Login" />
+          <button type="button" onClick="window.location='index.php?page=register'">Register for New Account</button>
+	  </span> </div>
+         </div>
+        </form>
+       </div>
+
+        				 
+  </div>
+
+<script>
+
+  $(".form_error").hide()
+	
+  $(":submit").click(function(event)
+  {
+    var f = $(this).closest("form");
+    event.preventDefault();
+    $.post("current/tpcm/login-session.php", f.serialize(), (function(form)
+    {
+	return function(resp)
+        {
+	  $(".form_error", form).hide();
+	  var success = parseInt(resp.code);
+	            if (success) window.location = "index.php";
+	  	  else {
+    	    $(".form_error", form).show();
+	    $(".form_error", form).text(resp.msg);
+	    $(":password", form).val("");
+	  };
+	};
+    })(f), 'json');
+  });
+</script>
+
+    <div class="panel">
+      <h2> 2013-2014 Schedule </h2>
+      Nov 15-18: November Contest <br>
+      Dec 13-16: December Contest <br>
+      Jan 10-13: January Contest <br>
+      Feb 7-10: February Contest <br>
+      Mar 7-10: March Contest <br>
+      April 4-7: US Open <br>
+      May 22-31: Training Camp <br>
+      July 13-20: IOI'14 in Taipei, Taiwan
+    </div>
+
+
+</div>
+
+<br style="clear:both" />
+    <div class="panel sponsors" style="position:relative; float:left; left:10px; top:-50px; width:800px;"> 
+    <h2> Our Sponsors </h2>
+
+<span><a style="text-decoration:none;" href="http://www.ibm.com"><img src="current/images/sponsors/logo_ibm.jpg" width="135px"></a></span>
+&nbsp&nbsp&nbsp
+<span><a style="text-decoration:none;" href="http://www.usenix.org"><img src="current/images/sponsors/logo_usenix.png" width="200px"></a></span>
+&nbsp&nbsp&nbsp
+<span><a style="text-decoration:none;" href="http://www.jumptrading.com"><img src="current/images/sponsors/logo_jumptrading.png" width="50px"><br>Jump Trading</a></span>
+&nbsp&nbsp&nbsp
+<span><a style="text-decoration:none;" href="http://www.twosigma.com"><img src="current/images/sponsors/logo_twosigma.png" width="50px"><br>TwoSigma</a></span>
+&nbsp&nbsp&nbsp
+<span><a style="text-decoration:none;" href="http://www.clemson.edu"><img src="current/images/sponsors/logo_clemson.png" width="55px"><br>Clemson University</a></span>
+
+    </div>
+
+  <br style="clear:both" />
+
+
+   </div>
+  </div>
+ </div>
+
+ <br style="clear:both" />
+
+</body>
+
+</html>
+
+
