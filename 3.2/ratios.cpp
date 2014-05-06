@@ -56,6 +56,7 @@ public:
 		a = x / c;
 		b = y / c;
 	}
+
 	Ratio(const Ratio &o)
 	{
 		a = o.a;
