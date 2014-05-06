@@ -19,7 +19,7 @@ LANG: C++
 using namespace std; 
 
 typedef struct wheel{
-	int speed,begin,width;
+	int speed,begin,width,flag;
 } Wheel;
 Wheel arr[50];
 int n,m;
@@ -32,21 +32,29 @@ void wheel_add(Wheel &a)
 	arr[n].speed = a.speed;
 	arr[n].begin = a.begin;
 	arr[n].width = a.width;
+	arr[n].flag = a.flag;
 	n += 1;
 }
 
 int can()
 {
-	int round[360],temp[360];
+	int round[360],temp[360],t;
 	
 	for(int i =0;i<360;i++)
 		round[i] = 1;
-
-	for(int i =0;i<n;i++)		
+	
+	t = 0;
+	for(int i =0;i<5;i++)		
 	{
 		memset(temp,0,sizeof(temp));
-		for(int j=0;j<=arr[i].width;j++)
-			temp[(arr[i].begin + j) % 360] = 1;
+		while(t < n)
+		{
+			for(int j=0;j<=arr[t].width;j++)
+				temp[(arr[t].begin + j) % 360] = 1;
+			t += 1;
+			if(t < n && arr[t].flag != arr[t-1].flag)
+				break;
+		}
 		for(int	j=0;j<360;j++)
 			round[j] = round[j] & temp[j]; 
 	}
@@ -65,6 +73,7 @@ int main(void){
 		for(int j=0;j<m;j++)
 		{
 			fin >> temp.begin >> temp.width;
+			temp.flag = i;
 			wheel_add(temp);	
 		}
 	}
@@ -73,7 +82,11 @@ int main(void){
 		if(can())
 			break;
 		for(int i =0;i<n;i++)
-			arr[i].begin += arr[i].speed;
+		{
+			arr[i].begin = (arr[i].begin + arr[i].speed)% 360;
+//			cout << arr[i].begin << " " <<arr[i].width  << " flag=" << arr[i].flag<<endl;
+		}
+//		cout << endl;
 	}
 
 	if(i == 360)
